@@ -21,12 +21,7 @@ var connect = require('connect'),
   WebSocketServer = require('ws').Server,
   wss = new WebSocketServer({
     server: server
-  }),
-  url = "http://localhost:" + port,
-  socket = require('socket.io-client').connect(url, {
-    transports: ['websocket']
-  }),
-  socketio = require('socket.io');
+  });
 
 
 // serve client html file
@@ -39,7 +34,7 @@ app.use(serveStatic(shareCodeMirror.scriptsDir));
 app.use(CORS())
 
 server.listen(port);
-var io = socketio.listen(server.server);
+
 
 console.log("Listening on http://localhost:" + port + "/");
 
